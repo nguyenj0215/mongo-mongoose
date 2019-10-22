@@ -31,5 +31,8 @@
   </div>
 
   <!--Area to add card for each article scraped with article notes / delete buttons -->
-  {{articles}}
+  {{#each articles}}
+  <p class="articleTitle">{{articles.title}}</p>
+  <p class="articleLink">{{articles.link}}</p>
+  {{/each}}
 </div>

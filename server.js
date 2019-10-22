@@ -72,6 +72,7 @@ app.get("/", function (req, res) {
   db.Article
     .find({})
     .then(function (dbArticle) {
+      //By default we will just display 1 article on the page
       // If we were able to successfully find Articles, send them back to the client
       res.render("index", {articles : dbArticle});
     })
