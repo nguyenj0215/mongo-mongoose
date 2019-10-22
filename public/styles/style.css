@@ -1,27 +1,36 @@
 body { 
     background-color: #F2F6D0;
   }
-  #articles {
-    display: inline-block;
-    overflow: auto;
-    width: 60%;
-    height: 700px;
+  .articlesScraped {
+    border:1px solid black; 
+    padding: 5px;
   }
-  #comments {
-    float: right;
-    width: 30%;
+  .articleTitleBox {
+    border: 2px solid #4aaaa5;
+    padding: 5px; 
+    margin-bottom: -5px;
+    font-weight: bolder;
+    background-color: #4aaaa5;
+    opacity: 0.9;
+    color: white;
+    text-align: center;
   }
   textarea, input {
     display: block;
     width: 100%;
     background-color: #FCF5C7;
   }
+  #titleinput {
+    border: 2px solid #4aaaa5;
+  }
+  #bodyinput {
+    border: 2px solid #4aaaa5;
+    border-top: 0;
+  }
   input {
     height: 36px;
-    font-size: 24px;
   }
   textarea {
     height: 200px;
-    font-size: 18px;
   }
   

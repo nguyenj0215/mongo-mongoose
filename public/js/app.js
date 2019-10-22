@@ -22,11 +22,11 @@ $(document).on("click", ".articlesScraped", function () {
     // With that done, add the note information to the page
     .then(function (data) {
       // The title of the article
-      $("#comments").append("<h4>" + data.title + "</h4>");
+      $("#comments").append("<p class='articleTitleBox'>" + data.title + "</p>");
       // An input to enter a new title
-      $("#comments").append("<input id='titleinput' name='title' >");
+      $("#comments").append("<input id='titleinput' name='title' placeholder='Comment Title'>");
       // A textarea to add a new note body
-      $("#comments").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#comments").append("<textarea id='bodyinput' name='body' placeholder='Comment Body' ></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#comments").append("<button data-id='" + data._id + "' id='savecomments'>Save Comment</button>");
 
