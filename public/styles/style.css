@@ -5,32 +5,30 @@ body {
     border:1px solid black; 
     padding: 5px;
   }
-  .articleTitleBox {
-    border: 2px solid #4aaaa5;
+  .commentTitleBox {
+    border: 2px solid black;
     padding: 5px; 
+    padding-bottom: 10px;
     margin-bottom: -5px;
     font-weight: bolder;
-    background-color: #4aaaa5;
-    opacity: 0.9;
-    color: white;
     text-align: center;
+    background-color: white;
+  }
+  #savecomments {
+    float: right;
   }
   textarea, input {
     display: block;
     width: 100%;
-    background-color: #FCF5C7;
+    padding-left: 5px;
   }
   #titleinput {
-    border: 2px solid #4aaaa5;
-  }
-  #bodyinput {
-    border: 2px solid #4aaaa5;
-    border-top: 0;
-  }
-  input {
+    border: 2px solid  black;
     height: 36px;
   }
-  textarea {
+  #bodyinput {
+    border: 2px solid black;
+    border-top: 0;
     height: 200px;
   }
   

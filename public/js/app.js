@@ -3,7 +3,11 @@ $.getJSON("/articles", function (data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p class='articlesScraped' data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<p class='articlesScraped' data-id='" 
+    + data[i]._id + "'>" 
+    + data[i].title + "<br/>" 
+    + data[i].link + "<br/>" 
+    + data[i].summary + "</p>");
   }
 });
 
@@ -21,8 +25,9 @@ $(document).on("click", ".articlesScraped", function () {
   })
     // With that done, add the note information to the page
     .then(function (data) {
+
       // The title of the article
-      $("#comments").append("<p class='articleTitleBox'>" + data.title + "</p>");
+      $("#comments").append("<p class='commentTitleBox'>" + data.title + "</p>");
       // An input to enter a new title
       $("#comments").append("<input id='titleinput' name='title' placeholder='Comment Title'>");
       // A textarea to add a new note body
@@ -40,7 +45,7 @@ $(document).on("click", ".articlesScraped", function () {
     });
 })
 // When you click the savenote button
-$(document).on("click", "#savecomments", function() {
+$(document).on("click", "#savecomments", function () {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -56,7 +61,7 @@ $(document).on("click", "#savecomments", function() {
     }
   })
     // With that done
-    .then(function(data) {
+    .then(function (data) {
       // Log the response
       console.log(data);
       // Empty the notes section

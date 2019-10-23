@@ -8,10 +8,16 @@ var Schema = mongoose.Schema;
 var ArticleSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   // `link` is required and of type String
   link: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  summary: {
     type: String,
     required: true
   },
