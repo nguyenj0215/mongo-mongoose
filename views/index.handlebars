@@ -12,9 +12,6 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home</span></a>
         </li>
-        {{!-- <li class="nav-item active">
-          <a class="nav-link" href="/articles">Saved Articles</a>
-        </li> --}}
         <li class="nav-item active">
           <a class="nav-link" href="/scrape">Scrape</a>
         </li>
@@ -22,15 +19,24 @@
     </div>
   </nav>
   <!-- Jumbotron with assignment name / website scraped -->
-  <div class="jumbotron" style="background-color: #e0e9f0;">
+  <div class="jumbotron" style="background-color: #4aaaa5; color:white;">
     <h1 class="display-4" style="text-align: center; font-weight: bold; font-style:italic;">New York Times - Sports</h1>
-    <hr class="my-4">
-    <p style="text-align: center;">Scrape articles from the New York Times Sports Page and click on their titles below to add a comment</p>
+    <hr class="my-6">
+    <p style="text-align: center; font-size: 18px;">Scrape articles from the New York Times Sports Page and click on
+      their titles below to add a comment</p>
   </div>
-  
+
   <div class="row">
-  <p id="articles" class="col-md-8"></p>
-  <p id="comments" class="col-md-4"></p>
+    <div id="articles" class="col-md-9">
+      {{#each articles}}
+      <div class='articleBox'>
+        <p class='articlesScraped' data-id='{{this._id}}'> {{this.title}} </p>
+        <a class='articleLink' href='https://www.nytimes.com' {{this.link}}>www.newyorktimes.com/{{this.link}}</a>
+        <p class='articleSummary'>{{this.summary}}</p>
+      </div>
+      {{/each}}
+    </div>
+    <p id="comments" class="col-md-3"></p>
   </div>
-  
+
 </div>

@@ -39,8 +39,6 @@
   }
   #deletecomments {
     margin-top: 3px;
-    float: right;
-    margin-right: 15px;
   }
   textarea, input {
     display: block;

@@ -1,26 +1,9 @@
-// Grab the articles as a json
-$.getJSON("/articles", function (data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    $("#articles").append(
-      "<div class='articleBox'>" +
-      "<p class='articlesScraped' data-id='"
-      + data[i]._id + "'>"
-      + data[i].title + "</p>" +
-      "<a class='articleLink' href='https://www.nytimes.com" + data[i].link + "'>" + 'www.newyorktimes.com/' + data[i].link + '</a>' +
-      "<p class='articleSummary'>" + data[i].summary + "</p>" +
-      "</div>");
-  }
-});
-
-
 //On click of an articles scraped class of appended p tags
 $(document).on("click", ".articlesScraped", function () {
   // Empty the notes from the note section
   $("#comments").empty();
   // Save the id from the p tag
-  var thisId = $(this).attr("data-id");
+  let thisId = $(this).attr("data-id");
 
   // Now make an ajax call for the Article
   $.ajax({
@@ -37,9 +20,9 @@ $(document).on("click", ".articlesScraped", function () {
       // A textarea to add a new note body
       $("#comments").append("<textarea id='bodyinput' name='body' placeholder='Comment Body' ></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#comments").append("<button data-id='" + data._id + "' id='savecomments'>Save Comment</button>");
+      $("#comments").append("<button data-id='" + data._id + "' id='savecomments'>Save</button>");
       // A button to delete a new note, with the id of the article saved to it
-      //$("#comments").append("<button data-id='" + data._id + "' id='deletecomments'>Delete Comment</button>");
+      $("#comments").append("<button data-id='" + data._id + "' id='deletecomments'>Delete</button>");
 
       // If there's a note in the article
       if (data.comment) {
@@ -53,7 +36,7 @@ $(document).on("click", ".articlesScraped", function () {
 // When you click the savenote button
 $(document).on("click", "#savecomments", function () {
   // Grab the id associated with the article from the submit button
-  var thisId = $(this).attr("data-id");
+  let thisId = $(this).attr("data-id");
 
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
@@ -80,17 +63,15 @@ $(document).on("click", "#savecomments", function () {
 // When user clicks the delete button for a note
 $(document).on("click", "#deletecomments", function () {
   // Save the p tag that encloses the button
-  var thisId = $(this).attr("data-id");
+  let thisId = $(this).attr("data-id");
   console.log(thisId)
   $.ajax({
-    url: '/delete/' + thisId,
-    method: "DELETE"
-  }) // With that done
-    .then(function (data) {
-      // Empty the notes section
-      $("#comments").empty();
-    });
-
+    url: '/comments/' + thisId,
+    method: "GET"
+  }).then(function (data) {
+    // Empty the notes section
+    $("#comments").empty();
+  });
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
