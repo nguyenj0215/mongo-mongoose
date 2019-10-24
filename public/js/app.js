@@ -8,7 +8,7 @@ $.getJSON("/articles", function (data) {
       "<p class='articlesScraped' data-id='"
       + data[i]._id + "'>"
       + data[i].title + "</p>" +
-      "<a class='articleLink' href='" + data[i].link + "'>" + data[i].link + '</a>' +
+      "<a class='articleLink' href='https://www.nytimes.com" + data[i].link + "'>" + 'www.newyorktimes.com/' + data[i].link + '</a>' +
       "<p class='articleSummary'>" + data[i].summary + "</p>" +
       "</div>");
   }

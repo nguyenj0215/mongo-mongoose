@@ -26,12 +26,12 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
-// Connect to the Mongo DB
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+// // Connect to the Mongo DB
+// mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Connect to the Mongo DB
-//mongoose.connect("mongodb://localhost/yeyeyeye12", { useNewUrlParser: true });
+//Connect to the Mongo DB
+mongoose.connect("mongodb://localhost/yeyeyeye12", { useNewUrlParser: true });
 
 // Start the server listener
 app.listen(PORT, function () {
