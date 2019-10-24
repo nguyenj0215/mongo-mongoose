@@ -3,13 +3,17 @@ $.getJSON("/articles", function (data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p class='articlesScraped' data-id='" 
-    + data[i]._id + "'>" 
-    + data[i].title + "<br/>" 
-    + data[i].link + "<br/>" 
-    + data[i].summary + "</p>");
+    $("#articles").append(
+      "<div class='articleBox'>" +
+      "<p class='articlesScraped' data-id='"
+      + data[i]._id + "'>"
+      + data[i].title + "</p>" +
+      "<a class='articleLink' href='" + data[i].link + "'>" + data[i].link + '</a>' +
+      "<p class='articleSummary'>" + data[i].summary + "</p>" +
+      "</div>");
   }
 });
+
 
 //On click of an articles scraped class of appended p tags
 $(document).on("click", ".articlesScraped", function () {
@@ -34,6 +38,8 @@ $(document).on("click", ".articlesScraped", function () {
       $("#comments").append("<textarea id='bodyinput' name='body' placeholder='Comment Body' ></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#comments").append("<button data-id='" + data._id + "' id='savecomments'>Save Comment</button>");
+      // A button to delete a new note, with the id of the article saved to it
+      $("#comments").append("<button data-id='" + data._id + "' id='deletecomments'>Delete Comment</button>");
 
       // If there's a note in the article
       if (data.comment) {
@@ -62,8 +68,25 @@ $(document).on("click", "#savecomments", function () {
   })
     // With that done
     .then(function (data) {
-      // Log the response
-      console.log(data);
+      // Empty the notes section
+      $("#comments").empty();
+    });
+
+  // Also, remove the values entered in the input and textarea for note entry
+  $("#titleinput").val("");
+  $("#bodyinput").val("");
+});
+
+// When user clicks the delete button for a note
+$(document).on("click", "#deletecomments", function () {
+  // Save the p tag that encloses the button
+  var thisId = $(this).attr("data-id");
+  console.log(thisId)
+  $.ajax({
+    url: '/delete/' + thisId,
+    method: "DELETE"
+  }) // With that done
+    .then(function (data) {
       // Empty the notes section
       $("#comments").empty();
     });

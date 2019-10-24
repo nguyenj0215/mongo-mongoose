@@ -1,9 +1,5 @@
-body { 
-    background-color: #F2F6D0;
-  }
-  .articlesScraped {
-    border:1px solid black; 
-    padding: 5px;
+  body {
+    background-color: #e3f2fd;
   }
   .commentTitleBox {
     border: 2px solid black;
@@ -12,15 +8,47 @@ body {
     margin-bottom: -5px;
     font-weight: bolder;
     text-align: center;
-    background-color: white;
+    background-color: #4aaaa5;
+    color: white;
+  }
+  .articleBox {
+    border: 2px solid black;
+    margin-bottom: 5px;
+    background-color: rgb(231, 228, 228);
+    background-color: #4aaaa5;
+    color: white;
+  }
+  .articlesScraped {
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+  }
+  .articleLink {
+    text-align: center;
+    color: rgb(219, 219, 37);
+    padding-left: 15px;
+  }
+  .articleSummary {
+    padding-left: 15px;
   }
   #savecomments {
+    margin-top: 3px;
     float: right;
+  }
+  #deletecomments {
+    margin-top: 3px;
+    float: right;
+    margin-right: 15px;
   }
   textarea, input {
     display: block;
     width: 100%;
     padding-left: 5px;
+    background-color: #94dfda;
+    color: black;
+    font-weight: bold;
   }
   #titleinput {
     border: 2px solid  black;

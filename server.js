@@ -26,12 +26,12 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
-// // Connect to the Mongo DB
-// mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadLines";
+// Connect to the Mongo DB
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/yeyeyeye12", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/yeyeyeye12", { useNewUrlParser: true });
 
 // Start the server listener
 app.listen(PORT, function () {
@@ -40,7 +40,7 @@ app.listen(PORT, function () {
 
 // "/" route to load index.html by default
 app.get("/", function (req, res) {
-  db.Article.find({})
+  db.Article.find({saved: false})
     .then(function (dbArticle) {
       res.render("index");
       //res.json(dbArticle);
@@ -100,6 +100,16 @@ app.get("/articles", function (req, res) {
       res.json(err);
     });
 })
+// //Articles route for sending json of all scraped articles
+app.get("/comments", function (req, res) {
+  db.Comment.find({})
+    .then(function (dbComments) {
+      res.json(dbComments);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+})
 // Route for grabbing a specific Article by id, populate it with it's comment
 app.get("/articles/:id", function (req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
@@ -133,4 +143,10 @@ app.post("/articles/:id", function (req, res) {
       // If an error occurred, send it to the client
       res.json(err);
     });
+});
+app.delete("/delete/:id", (req, res) => {
+  db.Comment
+      .deleteOne({_id: req.params.id})
+      .then(data => res.json(data))
+      .catch(err => res.json(err))
 });
