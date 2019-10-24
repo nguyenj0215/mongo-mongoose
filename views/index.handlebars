@@ -31,7 +31,7 @@
       {{#each articles}}
       <div class='articleBox'>
         <p class='articlesScraped' data-id='{{this._id}}'> {{this.title}} </p>
-        <a class='articleLink' href='https://www.nytimes.com' {{this.link}}>www.newyorktimes.com/{{this.link}}</a>
+        <a class='articleLink' href='https://www.nytimes.com{{this.link}}'>www.newyorktimes.com/{{this.link}}</a>
         <p class='articleSummary'>{{this.summary}}</p>
       </div>
       {{/each}}

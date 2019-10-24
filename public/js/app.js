@@ -12,8 +12,6 @@ $(document).on("click", ".articlesScraped", function () {
   })
     // With that done, add the note information to the page
     .then(function (data) {
-
-      // The title of the article
       $("#comments").append("<p class='commentTitleBox'>" + data.title + "</p>");
       // An input to enter a new title
       $("#comments").append("<input id='titleinput' name='title' placeholder='Comment Title'>");
