@@ -20,7 +20,7 @@ $(document).on("click", ".articlesScraped", function () {
       // A button to submit a new note, with the id of the article saved to it
       $("#comments").append("<button data-id='" + data._id + "' id='savecomments'>Save</button>");
       // A button to delete a new note, with the id of the article saved to it
-      $("#comments").append("<button data-id='" + data._id + "' id='deletecomments'>Delete</button>");
+      //$("#comments").append("<button data-id='" + data._id + "' id='deletecomments'>Delete</button>");
 
       // If there's a note in the article
       if (data.comment) {
